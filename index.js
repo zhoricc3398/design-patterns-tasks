@@ -1,1 +1,2 @@
-require('./build/factory/factory');
+
+require('./build/factory/factory.js');

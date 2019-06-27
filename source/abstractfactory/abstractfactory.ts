@@ -1,9 +1,9 @@
 import { DroidInterface } from "./abstractfactoryInterface";
 
-type kindOf = 'battle'
+type kindOf = "battle";
 
 function droidProducer(kind: kindOf) {
-    if (kind === 'battle'){
+    if (kind === "battle") {
         return battleDroidFactory;
     }
 
@@ -19,13 +19,13 @@ function pilotDroidFactory(): DroidInterface {
 }
 
 class B1 implements DroidInterface {
-    info() {
+    public info() {
         return "B1, Battle Droid";
     }
 }
 
 class Rx24 implements DroidInterface {
-    info() {
+    public info() {
         return "Rx24, Pilot Droid";
     }
 }

@@ -1,3 +1,3 @@
 export interface DroidInterface {
-    info: () => string
+    info: () => string;
 }

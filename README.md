@@ -1,1 +1,1 @@
-# design-patterns-tasks
+# personal-project-typescript
