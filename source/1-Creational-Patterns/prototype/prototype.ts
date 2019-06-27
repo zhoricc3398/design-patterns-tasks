@@ -1,13 +1,14 @@
-import { Cloneable, Isheep } from "./prototypeInterface";
+import { Cloneable } from "./interfaces/cloneable";
+import { Isheep } from "./interfaces/Isheep";
 
 class Sheep implements Cloneable<Sheep>, Isheep {
 
-    constructor(public name, public weight) {
+    constructor(public name: string, public weight: number) {
         this.name = name;
         this.weight = weight;
     }
 
-    clone() {
+    public clone() {
         return new Sheep(this.name, this.weight);
     }
 }

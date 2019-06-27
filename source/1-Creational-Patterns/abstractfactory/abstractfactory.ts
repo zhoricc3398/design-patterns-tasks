@@ -1,4 +1,5 @@
-import { DroidInterface } from "./abstractfactoryInterface";
+import { IDroid } from "./interfaces/Idroid";
+import { Rx24 } from "./rx24";
 
 type kindOf = "battle";
 
@@ -10,23 +11,17 @@ function droidProducer(kind: kindOf) {
     return pilotDroidFactory;
 }
 
-function battleDroidFactory(): DroidInterface {
+function battleDroidFactory(): IDroid {
     return new B1();
 }
 
-function pilotDroidFactory(): DroidInterface {
+function pilotDroidFactory(): IDroid {
     return new Rx24();
 }
 
-class B1 implements DroidInterface {
+class B1 implements IDroid {
     public info() {
         return "B1, Battle Droid";
-    }
-}
-
-class Rx24 implements DroidInterface {
-    public info() {
-        return "Rx24, Pilot Droid";
     }
 }
 

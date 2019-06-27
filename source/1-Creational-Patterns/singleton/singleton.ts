@@ -1,6 +1,8 @@
 class Person {
+    private static instance: Person;
+
     constructor() {
-        if (typeof Person.instance === 'object') {
+        if (Person.instance) {
             return Person.instance;
         }
         Person.instance = this;
