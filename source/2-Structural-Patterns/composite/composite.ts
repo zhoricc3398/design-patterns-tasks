@@ -1,77 +1,28 @@
-interface IEquipment {
-    getPrice: () => number;
-    getName: () => string;
-    setName: (name: string) => void;
-}
+import { Cabinet } from "./cabinet";
+import { Equipment } from "./equipment";
+import { FloppyDisk } from "./floppydisk";
+import { HardDrive } from "./harddrive";
+import { IComposite } from "./interfaces/Icomposite";
+import { IEquipment } from "./interfaces/Iequipment";
+import { Memory } from "./memory";
 
-//Equipment
-class Equipment implements IEquipment {
-    public price: number;
-    public name: string;
-
-    public getPrice() {
-        return this.price || 0;
-    }
-
-    public getName() {
-        return this.name;
-    }
-
-    public setName(name: string) {
-        this.name = name;
-    }
-}
-
-// --- composite ---
-class Composite extends Equipment {
-    public equipments: number[]
+export class Composite extends Equipment implements IComposite {
+    public equipments: IEquipment[];
     constructor() {
         super();
         this.equipments = [];
     }
 
-    add(equipment: number) {
+    public add(equipment: IEquipment) {
         this.equipments.push(equipment);
     }
 
-    getPrice() {
-        return this.equipments.map(equipment => {
+    public getPrice() {
+        return this.equipments.map((equipment) => {
             return equipment.getPrice();
         }).reduce((a, b) => {
             return a + b;
         });
-    }
-}
-
-class Cabinet extends Composite {
-    constructor() {
-        super();
-        this.setName('cabinet');
-    }
-}
-
-// --- leafs ---
-class FloppyDisk extends Equipment {
-    constructor() {
-        super();
-        this.setName('Floppy Disk');
-        this.price = 70;
-    }
-}
-
-class HardDrive extends Equipment {
-    constructor() {
-        super();
-        this.setName('Hard Drive');
-        this.price = 250;
-    }
-}
-
-class Memory extends Equipment {
-    constructor() {
-        super();
-        this.setName('Memory');
-        this.price = 280;
     }
 }
 
